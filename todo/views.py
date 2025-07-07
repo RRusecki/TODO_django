@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.template.context_processors import request
 from django.contrib import messages
 from .forms import TaskForm
 from .models import Task
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
 
 @login_required
 def task_list(request):
@@ -30,7 +31,7 @@ def edit_task(request, task_id):
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
-            return redirect(("task_list"))
+            return redirect("task_list")
     else:
         form = TaskForm(instance=task)
     return render(request, "todo/task_form.html", {"form": form})
@@ -43,3 +44,26 @@ def delete_task(request,task_id):
         messages.success(request, "Užduotis ištrinta sėkmingai.")
         return redirect("task_list")
     return render(request, "todo/confirm_delete.html", {"task": task})
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("task_list")
+    else:
+        form = UserCreationForm()
+    return render(request, "todo/register.html", {"form": form})
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("task_list")
+    else:
+        messages.error(request, "Neteisingas vartotojo vardas arba slaptažodis.")
+    return render(request, "todo/login.html")
