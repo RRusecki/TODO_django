@@ -6,7 +6,12 @@
 </head>
 <body>
     <h1>Sveikas, {{ request.user.username }}!</h1>
-    <a href="{% url 'create_task' %}">➕ Nauja užduotis</a>
+    <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Atsijungti</button>
+    </form>
+    p>Prisijungęs kaip: {{ request.user.username }}</p>
+    <a href="{% url 'create_task' %}">Nauja užduotis</a>
 
     <h2>Tavo užduotys</h2>
     {% if tasks %}

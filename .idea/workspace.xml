@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="283b1bbc-43d8-439a-879c-b7aac5baaadd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/todo/templates/registration/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo/templates/todo/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo/templates/todo/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todo/templates/registration/logout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/todo/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/todo/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/todo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/todo/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo/templates/todo/task_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/todo/templates/todo/task_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
