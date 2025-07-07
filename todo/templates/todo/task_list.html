@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Tavo užduotys</title>
+</head>
+<body>
+    <h1>Sveikas, {{ request.user.username }}!</h1>
+    <a href="{% url 'create_task' %}">➕ Nauja užduotis</a>
+
+    <h2>Tavo užduotys</h2>
+    {% if tasks %}
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    <strong>{{ task.title }}</strong><br>
+                    {{ task.content }}<br>
+                    <small>Sukurta: {{ task.created_at }}</small>
+                    <a href="{% url 'edit_task' task.id %}">Redaguoti</a>
+                    <a href="{% url 'delete_task' task.id %}">Ištrinti</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Tu dar neturi užduočių.</p>
+    {% endif %}
+</body>
+</html>

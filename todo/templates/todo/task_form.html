@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <title>Užduoties forma</title>
+</head>
+<body>
+    <h2>{% if form.instance.pk %}Redaguoti užduotį{% else %}Pridėti naują užduotį{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Išsaugoti</button>
+    </form>
+    <a href="{% url 'task_list' %}">Grįžti į sąrašą</a>
+    {% if form.instance.pk %}
+    <form action="{% url 'delete_task' form.instance.pk %}" method="post" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('Ar tikrai nori ištrinti šią užduotį?');">Ištrinti</button>
+    </form>
+    {% endif %}
+</body>
+</html>
