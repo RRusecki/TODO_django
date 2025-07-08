@@ -4,7 +4,7 @@ from django.contrib import messages
 from .forms import TaskForm
 from .models import Task
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 
 @login_required
 def task_list(request):
@@ -67,3 +67,7 @@ def login_view(request):
     else:
         messages.error(request, "Neteisingas vartotojo vardas arba slaptažodis.")
     return render(request, "todo/login.html")
+
+def logout_view(request):
+    logout(request)
+    return redirect("login")
